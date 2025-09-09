@@ -25,7 +25,7 @@ const CropModal = ({ isOpen, onClose, crop, farms, onSave }) => {
 
   useEffect(() => {
     if (crop) {
-      setFormData({
+setFormData({
         farmId: crop.farmId.toString(),
         cropType: crop.cropType,
         field: crop.field,
@@ -237,7 +237,7 @@ const Crops = () => {
       setFilteredCrops(crops);
     } else {
       const filtered = crops.filter(crop =>
-        crop.cropType.toLowerCase().includes(searchTerm.toLowerCase()) ||
+crop.cropType.toLowerCase().includes(searchTerm.toLowerCase()) ||
         crop.field.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredCrops(filtered);

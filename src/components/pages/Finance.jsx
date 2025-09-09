@@ -26,7 +26,7 @@ const TransactionModal = ({ isOpen, onClose, transaction, farms, onSave }) => {
 
   useEffect(() => {
     if (transaction) {
-      setFormData({
+setFormData({
         farmId: transaction.farmId.toString(),
         type: transaction.type,
         category: transaction.category,
@@ -233,7 +233,7 @@ const Finance = () => {
       setFilteredTransactions(transactions);
     } else {
       const filtered = transactions.filter(transaction =>
-        transaction.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+transaction.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
         transaction.description?.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredTransactions(filtered);

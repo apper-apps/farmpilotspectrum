@@ -7,7 +7,7 @@ import Button from "@/components/atoms/Button";
 
 const CropTable = ({ crops, farms, onEdit, onDelete }) => {
   const getFarmName = (farmId) => {
-    const farm = farms.find(f => f.Id === farmId);
+const farm = farms.find(f => f.Id === farmId);
     return farm?.name || "Unknown Farm";
   };
 
@@ -73,7 +73,7 @@ const CropTable = ({ crops, farms, onEdit, onDelete }) => {
                         <ApperIcon name="Sprout" className="h-5 w-5 text-white" />
                       </div>
                       <div>
-                        <p className="font-semibold text-gray-900">{crop.cropType}</p>
+<p className="font-semibold text-gray-900">{crop.cropType}</p>
                         <p className="text-sm text-gray-500">ID: {crop.Id}</p>
                       </div>
                     </div>
@@ -137,7 +137,7 @@ const CropTable = ({ crops, farms, onEdit, onDelete }) => {
                   <ApperIcon name="Sprout" className="h-5 w-5 text-white" />
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-900">{crop.cropType}</p>
+<p className="font-semibold text-gray-900">{crop.cropType}</p>
                   <p className="text-sm text-gray-500">{getFarmName(crop.farmId)}</p>
                 </div>
               </div>

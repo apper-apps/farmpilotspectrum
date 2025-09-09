@@ -68,7 +68,7 @@ const Activities = () => {
     }
     
     const filtered = tasks.filter(task => 
-      task.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+task.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       task.type?.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredTasks(filtered);
@@ -92,14 +92,13 @@ const Activities = () => {
   };
 
   const handleEditTask = (task) => {
-    setSelectedTask(task);
+setSelectedTask(task);
     setFormData({
       title: task.title || "",
       type: task.type || "",
       farmId: task.farmId || "",
-      description: task.description || "",
-      scheduledDate: task.scheduledDate || "",
-      priority: task.priority || "medium"
+      dueDate: task.dueDate ? task.dueDate.split("T")[0] : "",
+      priority: task.priority || "Medium"
     });
     setIsModalOpen(true);
   };
@@ -263,9 +262,9 @@ const Activities = () => {
           <FormField
             label="Farm"
             type="select"
-            value={formData.farmId}
+value={formData.farmId}
             onChange={(e) => setFormData({...formData, farmId: e.target.value})}
-            options={farms.map(farm => ({ value: farm.id, label: farm.name }))}
+            options={farms.map(farm => ({ value: farm.Id.toString(), label: farm.name }))}
             required
           />
 

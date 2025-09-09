@@ -22,7 +22,7 @@ const FarmModal = ({ isOpen, onClose, farm, onSave }) => {
 
   useEffect(() => {
     if (farm) {
-      setFormData({
+setFormData({
         name: farm.name,
         size: farm.size.toString(),
         sizeUnit: farm.sizeUnit,
@@ -183,7 +183,7 @@ const Farms = () => {
       setFilteredFarms(farms);
     } else {
       const filtered = farms.filter(farm =>
-        farm.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+farm.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         farm.location.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredFarms(filtered);

@@ -6,7 +6,7 @@ import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
 
 const FarmCard = ({ farm, onEdit, onDelete, crops = [], index = 0 }) => {
-  const activeCropsCount = crops.filter(crop => crop.farmId === farm.Id && crop.status === "Growing").length;
+const activeCropsCount = crops.filter(crop => crop.farmId === farm.Id && crop.status === "Growing").length;
   
   const handleEdit = () => {
     onEdit(farm);
@@ -36,7 +36,7 @@ const FarmCard = ({ farm, onEdit, onDelete, crops = [], index = 0 }) => {
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-primary-700 group-hover:text-primary-800 transition-colors">
-                    {farm.name}
+{farm.name}
                   </h3>
                   <p className="text-sm text-gray-500">{farm.location}</p>
                 </div>
@@ -53,7 +53,7 @@ const FarmCard = ({ farm, onEdit, onDelete, crops = [], index = 0 }) => {
                   <ApperIcon name="Maximize2" className="h-4 w-4 text-primary-500" />
                   <div>
                     <p className="text-xs text-gray-500">Size</p>
-                    <p className="font-semibold text-gray-700">{farm.size} {farm.sizeUnit}</p>
+<p className="font-semibold text-gray-700">{farm.size} {farm.sizeUnit}</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -61,7 +61,7 @@ const FarmCard = ({ farm, onEdit, onDelete, crops = [], index = 0 }) => {
                   <div>
                     <p className="text-xs text-gray-500">Created</p>
                     <p className="font-semibold text-gray-700">
-                      {new Date(farm.createdAt).toLocaleDateString()}
+{new Date(farm.createdAt).toLocaleDateString()}
                     </p>
                   </div>
                 </div>

@@ -1,5 +1,8 @@
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../App";
 import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
 
 const Sidebar = () => {
   const navigationItems = [

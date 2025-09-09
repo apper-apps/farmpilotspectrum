@@ -1,8 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
-import Sidebar from "@/components/organisms/Sidebar";
-import MobileSidebar from "@/components/organisms/MobileSidebar";
 import ApperIcon from "@/components/ApperIcon";
+import MobileSidebar from "@/components/organisms/MobileSidebar";
+import Sidebar from "@/components/organisms/Sidebar";
+import LogoutButton from "@/components/LogoutButton";
 
 const Layout = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -42,6 +43,9 @@ const Layout = () => {
                 </div>
                 <h1 className="text-xl font-bold text-primary-700">FarmPilot</h1>
               </div>
+</div>
+            <div className="flex items-center">
+              <LogoutButton />
             </div>
           </div>
         </header>

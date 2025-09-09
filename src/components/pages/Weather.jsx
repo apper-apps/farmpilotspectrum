@@ -122,7 +122,7 @@ const Weather = () => {
               <div className="flex items-center justify-between">
                 <div>
                   <h2 className="text-2xl font-bold">Today's Weather</h2>
-                  <p className="opacity-90">{currentWeather.date}</p>
+<p className="opacity-90">{currentWeather.date}</p>
                 </div>
                 <div className="text-right">
                   <div className="text-4xl font-bold">{currentWeather.temperature}°F</div>
