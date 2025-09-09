@@ -26,12 +26,12 @@ const Activities = () => {
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [selectedTask, setSelectedTask] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [formData, setFormData] = useState({
+const [formData, setFormData] = useState({
     title: "",
     type: "",
     farmId: "",
-    description: "",
-    scheduledDate: "",
+    notes: "",
+    dueDate: "",
     priority: "medium"
   });
   const [loading, setLoading] = useState(true);
@@ -84,8 +84,8 @@ task.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       title: "",
       type: "",
       farmId: "",
-      description: "",
-      scheduledDate: "",
+notes: "",
+      dueDate: "",
       priority: "medium"
     });
     setIsModalOpen(true);
@@ -97,6 +97,7 @@ setSelectedTask(task);
       title: task.title || "",
       type: task.type || "",
       farmId: task.farmId || "",
+notes: task.notes || "",
       dueDate: task.dueDate ? task.dueDate.split("T")[0] : "",
       priority: task.priority || "Medium"
     });
@@ -112,11 +113,14 @@ setSelectedTask(task);
     }
 
     try {
-      const taskData = {
-        ...formData,
-        status: selectedTask?.status || "pending",
-        createdAt: selectedTask?.createdAt || new Date().toISOString(),
-        updatedAt: new Date().toISOString()
+const taskData = {
+        title: formData.title,
+        type: formData.type,
+        farmId: formData.farmId,
+        notes: formData.notes,
+        dueDate: formData.dueDate || new Date().toISOString(),
+        priority: formData.priority,
+        completed: selectedTask?.completed || false
       };
 
       if (selectedTask) {
@@ -264,7 +268,7 @@ setSelectedTask(task);
             type="select"
 value={formData.farmId}
             onChange={(e) => setFormData({...formData, farmId: e.target.value})}
-            options={farms.map(farm => ({ value: farm.Id.toString(), label: farm.name }))}
+            options={farms.map(farm => ({ value: farm.Id.toString(), label: farm.name_c || farm.Name }))}
             required
           />
 

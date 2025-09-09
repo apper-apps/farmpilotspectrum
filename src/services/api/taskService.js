@@ -14,9 +14,10 @@ class TaskService {
         fields: [
           { field: { Name: "Name" } },
           { field: { Name: "title_c" } },
-          { field: { Name: "type_c" } },
+{ field: { Name: "type_c" } },
           { field: { Name: "due_date_c" } },
           { field: { Name: "priority_c" } },
+          { field: { Name: "notes_c" } },
           { field: { Name: "completed_c" } },
           { field: { Name: "completed_date_c" } },
           { field: { Name: "Tags" } },
@@ -52,9 +53,10 @@ class TaskService {
         Id: task.Id,
         title: task.title_c || task.Name,
         type: task.type_c || 'Other',
-        dueDate: task.due_date_c || new Date().toISOString(),
+dueDate: task.due_date_c || new Date().toISOString(),
         priority: task.priority_c || 'Medium',
         completed: task.completed_c || false,
+        notes: task.notes_c || '',
         completedDate: task.completed_date_c || null,
         farmId: task.farm_id_c?.Id || task.farm_id_c,
         farmName: task.farm_id_c?.Name || 'Unknown Farm',
@@ -74,7 +76,7 @@ class TaskService {
 
   async getById(id) {
     try {
-      const params = {
+const params = {
         fields: [
           { field: { Name: "Name" } },
           { field: { Name: "title_c" } },
@@ -106,9 +108,10 @@ class TaskService {
         Id: task.Id,
         title: task.title_c || task.Name,
         type: task.type_c || 'Other',
-        dueDate: task.due_date_c || new Date().toISOString(),
+dueDate: task.due_date_c || new Date().toISOString(),
         priority: task.priority_c || 'Medium',
         completed: task.completed_c || false,
+        notes: task.notes_c || '',
         completedDate: task.completed_date_c || null,
         farmId: task.farm_id_c?.Id || task.farm_id_c,
         farmName: task.farm_id_c?.Name || 'Unknown Farm',
@@ -132,8 +135,9 @@ class TaskService {
         records: [
           {
             Name: taskData.title || '',
-            title_c: taskData.title || '',
+title_c: taskData.title || '',
             type_c: taskData.type || 'Other',
+            notes_c: taskData.notes || '',
             due_date_c: taskData.dueDate || new Date().toISOString(),
             priority_c: taskData.priority || 'Medium',
             completed_c: false,
@@ -169,9 +173,10 @@ class TaskService {
             Id: task.Id,
             title: task.title_c || task.Name,
             type: task.type_c || 'Other',
-            dueDate: task.due_date_c || new Date().toISOString(),
+dueDate: task.due_date_c || new Date().toISOString(),
             priority: task.priority_c || 'Medium',
             completed: task.completed_c || false,
+            notes: task.notes_c || '',
             completedDate: task.completed_date_c || null,
             farmId: task.farm_id_c?.Id || task.farm_id_c,
             cropId: task.crop_id_c?.Id || task.crop_id_c,
@@ -201,8 +206,9 @@ class TaskService {
             Name: taskData.title || '',
             title_c: taskData.title || '',
             type_c: taskData.type || 'Other',
-            due_date_c: taskData.dueDate || new Date().toISOString(),
+due_date_c: taskData.dueDate || new Date().toISOString(),
             priority_c: taskData.priority || 'Medium',
+            notes_c: taskData.notes || '',
             completed_c: taskData.completed || false,
             completed_date_c: taskData.completed ? new Date().toISOString() : null,
             farm_id_c: parseInt(taskData.farmId),
@@ -235,9 +241,10 @@ class TaskService {
           return {
             Id: task.Id,
             title: task.title_c || task.Name,
-            type: task.type_c || 'Other',
+type: task.type_c || 'Other',
             dueDate: task.due_date_c || new Date().toISOString(),
             priority: task.priority_c || 'Medium',
+            notes: task.notes_c || '',
             completed: task.completed_c || false,
             completedDate: task.completed_date_c || null,
             farmId: task.farm_id_c?.Id || task.farm_id_c,
