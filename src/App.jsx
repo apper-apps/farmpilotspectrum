@@ -4,7 +4,7 @@ import Layout from "@/components/Layout";
 import Dashboard from "@/components/pages/Dashboard";
 import Farms from "@/components/pages/Farms";
 import Crops from "@/components/pages/Crops";
-import Tasks from "@/components/pages/Tasks";
+import Activities from "@/components/pages/Activities";
 import Finance from "@/components/pages/Finance";
 import Weather from "@/components/pages/Weather";
 
@@ -17,7 +17,7 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path="farms" element={<Farms />} />
             <Route path="crops" element={<Crops />} />
-            <Route path="tasks" element={<Tasks />} />
+<Route path="activities" element={<Activities />} />
             <Route path="finance" element={<Finance />} />
             <Route path="weather" element={<Weather />} />
           </Route>
