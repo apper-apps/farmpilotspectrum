@@ -30,7 +30,7 @@ const TaskList = ({ tasks, farms, crops, onToggleComplete, onEdit, onDelete }) =
     }
   };
 
-  const getTaskIcon = (type) => {
+const getTaskIcon = (type) => {
     switch (type.toLowerCase()) {
       case "watering":
         return "Droplets";
@@ -38,10 +38,14 @@ const TaskList = ({ tasks, farms, crops, onToggleComplete, onEdit, onDelete }) =
         return "Zap";
       case "harvesting":
         return "Scissors";
-      case "planting":
-        return "Sprout";
       case "weeding":
         return "Trash2";
+      case "spraying":
+        return "Spray";
+      case "cultivating":
+        return "Shovel";
+      case "other":
+        return "Settings";
       default:
         return "CheckSquare";
     }

@@ -12,12 +12,11 @@ import farmService from '@/services/api/farmService'
 const taskTypes = [
   "Watering",
   "Fertilizing",
-  "Planting",
+  "Weeding", 
   "Harvesting",
-  "Pruning",
-  "Pest Control",
-  "Soil Testing",
-  "Maintenance"
+  "Spraying",
+  "Cultivating",
+  "Other"
 ];
 
 const Activities = () => {
@@ -31,7 +30,7 @@ const [formData, setFormData] = useState({
     type: "",
     farmId: "",
     dueDate: "",
-    priority: "medium"
+    priority: "Medium"
   });
   const [loading, setLoading] = useState(true);
 
@@ -95,7 +94,7 @@ setSelectedTask(task);
       title: task.title || "",
       type: task.type || "",
       farmId: task.farmId || "",
-      dueDate: task.dueDate ? task.dueDate.split("T")[0] : "",
+dueDate: task.dueDate ? task.dueDate.split("T")[0] : "",
       priority: task.priority || "Medium"
     });
     setIsModalOpen(true);
@@ -278,10 +277,10 @@ value={formData.farmId}
             type="select"
             value={formData.priority}
             onChange={(e) => setFormData({...formData, priority: e.target.value})}
-            options={[
-              { value: "low", label: "Low" },
-              { value: "medium", label: "Medium" },
-              { value: "high", label: "High" }
+options={[
+              { value: "Low", label: "Low" },
+              { value: "Medium", label: "Medium" },
+              { value: "High", label: "High" }
             ]}
             required
           />
