@@ -13,7 +13,9 @@ class TaskService {
 
   async getById(id) {
     await new Promise(resolve => setTimeout(resolve, this.delay));
-    const task = this.tasks.find(t => t.Id === parseInt(id));
+const parsedId = parseInt(id);
+    if (isNaN(parsedId)) return null;
+    const task = this.tasks.find(t => t.id === parsedId);
     if (!task) {
       throw new Error("Task not found");
     }
@@ -23,7 +25,7 @@ class TaskService {
   async create(taskData) {
     await new Promise(resolve => setTimeout(resolve, this.delay));
     
-    const newId = Math.max(...this.tasks.map(t => t.Id), 0) + 1;
+const newId = this.tasks.length > 0 ? Math.max(...this.tasks.map(t => t.id || 0), 0) + 1 : 1;
     const newTask = {
       Id: newId,
       ...taskData,
@@ -38,7 +40,9 @@ class TaskService {
   async update(id, taskData) {
     await new Promise(resolve => setTimeout(resolve, this.delay));
     
-    const index = this.tasks.findIndex(t => t.Id === parseInt(id));
+const parsedId = parseInt(id);
+    if (isNaN(parsedId)) return null;
+    const index = this.tasks.findIndex(t => t.id === parsedId);
     if (index === -1) {
       throw new Error("Task not found");
     }
@@ -46,7 +50,7 @@ class TaskService {
     this.tasks[index] = {
       ...this.tasks[index],
       ...taskData,
-      Id: parseInt(id)
+id: parsedId
     };
     
     return { ...this.tasks[index] };
@@ -55,7 +59,9 @@ class TaskService {
   async delete(id) {
     await new Promise(resolve => setTimeout(resolve, this.delay));
     
-    const index = this.tasks.findIndex(t => t.Id === parseInt(id));
+const parsedId = parseInt(id);
+    if (isNaN(parsedId)) return false;
+    const index = this.tasks.findIndex(t => t.id === parsedId);
     if (index === -1) {
       throw new Error("Task not found");
     }
