@@ -12,12 +12,11 @@ class TaskService {
     try {
       const params = {
         fields: [
-          { field: { Name: "Name" } },
+{ field: { Name: "Name" } },
           { field: { Name: "title_c" } },
-{ field: { Name: "type_c" } },
+          { field: { Name: "type_c" } },
           { field: { Name: "due_date_c" } },
           { field: { Name: "priority_c" } },
-          { field: { Name: "notes_c" } },
           { field: { Name: "completed_c" } },
           { field: { Name: "completed_date_c" } },
           { field: { Name: "Tags" } },
@@ -51,12 +50,11 @@ class TaskService {
 
       return response.data.map(task => ({
         Id: task.Id,
-        title: task.title_c || task.Name,
+title: task.title_c || task.Name,
         type: task.type_c || 'Other',
-dueDate: task.due_date_c || new Date().toISOString(),
+        dueDate: task.due_date_c || new Date().toISOString(),
         priority: task.priority_c || 'Medium',
         completed: task.completed_c || false,
-        notes: task.notes_c || '',
         completedDate: task.completed_date_c || null,
         farmId: task.farm_id_c?.Id || task.farm_id_c,
         farmName: task.farm_id_c?.Name || 'Unknown Farm',
@@ -74,9 +72,9 @@ dueDate: task.due_date_c || new Date().toISOString(),
     }
   }
 
-  async getById(id) {
+async getById(id) {
     try {
-const params = {
+      const params = {
         fields: [
           { field: { Name: "Name" } },
           { field: { Name: "title_c" } },
@@ -106,12 +104,11 @@ const params = {
       const task = response.data;
       return {
         Id: task.Id,
-        title: task.title_c || task.Name,
+title: task.title_c || task.Name,
         type: task.type_c || 'Other',
-dueDate: task.due_date_c || new Date().toISOString(),
+        dueDate: task.due_date_c || new Date().toISOString(),
         priority: task.priority_c || 'Medium',
         completed: task.completed_c || false,
-        notes: task.notes_c || '',
         completedDate: task.completed_date_c || null,
         farmId: task.farm_id_c?.Id || task.farm_id_c,
         farmName: task.farm_id_c?.Name || 'Unknown Farm',
@@ -133,11 +130,10 @@ dueDate: task.due_date_c || new Date().toISOString(),
     try {
       const params = {
         records: [
-          {
+{
             Name: taskData.title || '',
-title_c: taskData.title || '',
+            title_c: taskData.title || '',
             type_c: taskData.type || 'Other',
-            notes_c: taskData.notes || '',
             due_date_c: taskData.dueDate || new Date().toISOString(),
             priority_c: taskData.priority || 'Medium',
             completed_c: false,
@@ -159,9 +155,8 @@ title_c: taskData.title || '',
       if (response.results) {
         const successfulRecords = response.results.filter(result => result.success);
         const failedRecords = response.results.filter(result => !result.success);
-        
-        if (failedRecords.length > 0) {
-          console.error(`Failed to create task ${failedRecords.length} records:${JSON.stringify(failedRecords)}`);
+if (failedRecords.length > 0) {
+          console.error(`Failed to create task ${failedRecords.length} records: ${JSON.stringify(failedRecords)}`);
           failedRecords.forEach(record => {
             if (record.message) throw new Error(record.message);
           });
@@ -171,12 +166,11 @@ title_c: taskData.title || '',
           const task = successfulRecords[0].data;
           return {
             Id: task.Id,
-            title: task.title_c || task.Name,
+title: task.title_c || task.Name,
             type: task.type_c || 'Other',
-dueDate: task.due_date_c || new Date().toISOString(),
+            dueDate: task.due_date_c || new Date().toISOString(),
             priority: task.priority_c || 'Medium',
             completed: task.completed_c || false,
-            notes: task.notes_c || '',
             completedDate: task.completed_date_c || null,
             farmId: task.farm_id_c?.Id || task.farm_id_c,
             cropId: task.crop_id_c?.Id || task.crop_id_c,
@@ -204,11 +198,10 @@ dueDate: task.due_date_c || new Date().toISOString(),
           {
             Id: parseInt(id),
             Name: taskData.title || '',
-            title_c: taskData.title || '',
+title_c: taskData.title || '',
             type_c: taskData.type || 'Other',
-due_date_c: taskData.dueDate || new Date().toISOString(),
+            due_date_c: taskData.dueDate || new Date().toISOString(),
             priority_c: taskData.priority || 'Medium',
-            notes_c: taskData.notes || '',
             completed_c: taskData.completed || false,
             completed_date_c: taskData.completed ? new Date().toISOString() : null,
             farm_id_c: parseInt(taskData.farmId),
@@ -228,9 +221,8 @@ due_date_c: taskData.dueDate || new Date().toISOString(),
       if (response.results) {
         const successfulUpdates = response.results.filter(result => result.success);
         const failedUpdates = response.results.filter(result => !result.success);
-        
-        if (failedUpdates.length > 0) {
-          console.error(`Failed to update task ${failedUpdates.length} records:${JSON.stringify(failedUpdates)}`);
+if (failedUpdates.length > 0) {
+          console.error(`Failed to update task ${failedUpdates.length} records: ${JSON.stringify(failedUpdates)}`);
           failedUpdates.forEach(record => {
             if (record.message) throw new Error(record.message);
           });
@@ -239,12 +231,11 @@ due_date_c: taskData.dueDate || new Date().toISOString(),
         if (successfulUpdates.length > 0) {
           const task = successfulUpdates[0].data;
           return {
-            Id: task.Id,
+Id: task.Id,
             title: task.title_c || task.Name,
-type: task.type_c || 'Other',
+            type: task.type_c || 'Other',
             dueDate: task.due_date_c || new Date().toISOString(),
             priority: task.priority_c || 'Medium',
-            notes: task.notes_c || '',
             completed: task.completed_c || false,
             completedDate: task.completed_date_c || null,
             farmId: task.farm_id_c?.Id || task.farm_id_c,
@@ -282,9 +273,8 @@ type: task.type_c || 'Other',
       if (response.results) {
         const successfulDeletions = response.results.filter(result => result.success);
         const failedDeletions = response.results.filter(result => !result.success);
-        
-        if (failedDeletions.length > 0) {
-          console.error(`Failed to delete task ${failedDeletions.length} records:${JSON.stringify(failedDeletions)}`);
+if (failedDeletions.length > 0) {
+          console.error(`Failed to delete task ${failedDeletions.length} records: ${JSON.stringify(failedDeletions)}`);
           failedDeletions.forEach(record => {
             if (record.message) throw new Error(record.message);
           });

@@ -30,7 +30,6 @@ const [formData, setFormData] = useState({
     title: "",
     type: "",
     farmId: "",
-    notes: "",
     dueDate: "",
     priority: "medium"
   });
@@ -80,11 +79,10 @@ task.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       return;
     }
     setSelectedTask(null);
-    setFormData({
+setFormData({
       title: "",
       type: "",
       farmId: "",
-notes: "",
       dueDate: "",
       priority: "medium"
     });
@@ -97,7 +95,6 @@ setSelectedTask(task);
       title: task.title || "",
       type: task.type || "",
       farmId: task.farmId || "",
-notes: task.notes || "",
       dueDate: task.dueDate ? task.dueDate.split("T")[0] : "",
       priority: task.priority || "Medium"
     });
@@ -117,7 +114,6 @@ const taskData = {
         title: formData.title,
         type: formData.type,
         farmId: formData.farmId,
-        notes: formData.notes,
         dueDate: formData.dueDate || new Date().toISOString(),
         priority: formData.priority,
         completed: selectedTask?.completed || false
@@ -207,9 +203,6 @@ const taskData = {
                     <p className="text-sm text-gray-600 mt-1">
                       Type: {task.type} • Farm: {farms.find(f => f.id === task.farmId)?.name || 'Unknown'}
                     </p>
-                    {task.description && (
-                      <p className="text-gray-700 mt-2">{task.description}</p>
-                    )}
                     {task.scheduledDate && (
                       <p className="text-sm text-gray-500 mt-2">
                         Scheduled: {new Date(task.scheduledDate).toLocaleDateString()}
@@ -272,14 +265,6 @@ value={formData.farmId}
             required
           />
 
-          <FormField
-            label="Description"
-            type="textarea"
-            value={formData.description}
-            onChange={(e) => setFormData({...formData, description: e.target.value})}
-            placeholder="Optional description..."
-            rows={3}
-          />
 
           <FormField
             label="Scheduled Date"
