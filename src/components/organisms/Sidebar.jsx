@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../App";
 import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
-
+import LogoutButton from "@/components/organisms/LogoutButton";
 const Sidebar = () => {
   const navigationItems = [
     { name: "Dashboard", href: "/", icon: "LayoutDashboard" },
@@ -59,7 +59,10 @@ const Sidebar = () => {
             <div>
               <p className="font-semibold text-primary-700">Farm Manager</p>
               <p className="text-sm text-gray-500">Active Session</p>
-            </div>
+</div>
+          </div>
+          <div className="mt-3 pt-3 border-t border-gray-200">
+            <LogoutButton />
           </div>
         </div>
       </div>
